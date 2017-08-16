@@ -5,8 +5,8 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-
-var articleone =
+var articles = {
+'article-one' :
 {
    title:'article one sravani chavatapalli',
    heading:' You have under the article-one page',
@@ -24,6 +24,44 @@ var articleone =
     <div>
      <h6> devloped by sravani.</h6>
      </div>`
+},
+'article-two':
+{
+ title:'article two sravani chavatapalli',
+   heading:' You have under the article-two page',
+   content:`<div>
+        <h3> this is second article this is second article this is second article this is second article this is second article this is second article this is second article this is second article this is first article this is second article this is second article</h3>
+    </div>
+    <div>
+         <h3> this is second article this is second article this is second article this is second article this is second article this is second article this is second article this is second article this is first article this is second article this is second article</h3>
+    </div>
+    <div>
+         <h3> this is second article this is second article this is second article this is second article this is second article this is second article this is second article this is second article this is first article this is second article this is second article</h3>
+    </div>
+    
+    <div>
+     <h6> devloped by sravani.</h6>
+     </div>`   
+},
+ 'article-Three':
+{
+    title:'article three sravani chavatapalli',
+   heading:' You have under the article-three page',
+   content:`<div>
+        <h3> this is three article this is three article this is three article this is three article this is three article this is three article this is three article this is three article this is three article this is three article this is three article</h3>
+    </div>
+    <div>
+         <h3> this is three article this is three article this is three article this is three article this is three article this is three article this is three article this is three article this is three article this is three article this is three article</h3>
+    </div>
+    <div>
+         <h3> this is three article this is three article this is three article this is three article this is three article this is three article this is three article this is three article this is three article this is three article this is three article</h3>
+    </div>
+    
+    <div>
+     <h6> devloped by sravani.</h6>
+     </div>`
+    
+}
 };
 
 function createTemplate(data)
@@ -66,8 +104,9 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one', function (req, res) {
-  res.send(createTemplate(articleone));
+app.get('/:articleName', function (req, res) {
+    var articleName=req.params.articleName
+  res.send(createTemplate(articles[articleName]));
 });
 
 app.get('/article-two', function (req, res) {
