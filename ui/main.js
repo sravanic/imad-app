@@ -14,3 +14,12 @@ img.onclick=function(){
     var interval=setInterval(moveright,50)
    // img.style.marginLeft='100px'
 }
+//count the button click.
+var button=document.getElementById('counter');
+var counter=0;
+button.onClick=function()
+{
+    counter=counter+1;
+    var span=document.getElementById('count');
+    span.innerHTML=counter.toString();
+};
